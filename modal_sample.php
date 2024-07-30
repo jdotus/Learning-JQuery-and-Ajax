@@ -1,17 +1,22 @@
 <?php
     include 'db_con.php';
 
-if(isset($_POST['id'])){
+if(isset($_GET['id'])){
     
     $output = '';
 
-    $query = "SELECT * FROM sample WHERE id = '" .$_POST["id"]. "'";
+    $query = "SELECT * FROM sample WHERE id = '" .$_GET["id"]. "'";
+
+    $newResult = $_GET['id'];
+    echo $newResult + 5;
+    // $query = "SELECT * FROM sample";
+
     $result = mysqli_query($conn, $query);
 
     $output .= '
         <div class="table-responsive">  
         <table class="table table-bordered">';
-    while($row = mysqli_fetch_assoc($result)){ 
+    while($row = mysqli_fetch_assoc($result)) { 
 
         $output .= 
         '

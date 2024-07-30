@@ -28,11 +28,26 @@
             id = $(this).attr("id");
             $.ajax({
               url: "modal_sample.php",
-              method: "post",
+              method: "get",
               data: {id:id},
-              success:function(result){
+              success: function(result){
               $(".modal-body").html(result)
             }});
+          })
+
+          $("#submit-form").on("click", function() {
+            var id = $("#id").val();
+            var fullname = $("#fullname").val();
+            $.ajax({
+              url: "process.php",
+              method: "post",
+              data: {
+                id: id, 
+                fullname: fullname
+              },
+              success:function(result) {
+                alert(result);
+              }})
           })
         });
     </script>
@@ -64,8 +79,6 @@
 
                     </button></td>
                 </tr>
-
-              
                 <?php
                 }
               }else {
@@ -73,8 +86,23 @@
               }
 
               ?>
+
+              
           </tbody>
         </table>
+        
+        <form action="process.php" method="post">
+                <div class="input-group input-group-sm mb-3">
+                  <span class="input-group-text" id="inputGroup-sizing-sm">ID</span>
+                  <input type="text" name="id" id="id" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+                </div>
+                <div class="input-group input-group-sm mb-3">
+                  <span class="input-group-text" id="inputGroup-sizing-sm">Fullname</span>
+                  <input type="text" name="fullname" id="fullname" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+                </div>
+                <button id="submit-form" type="submit" class="btn btn-success">submit</button>
+          </form>
+        
       </div>
 
       <!-- Modal -->
