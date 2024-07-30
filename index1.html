@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JQUEY</title>
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+    integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+    crossorigin="anonymous"></script>
+    
+    <script>
+        $(Document).ready(function() {
+            
+            $("button").click(function() {
+                $("h1").css("color", "Gray");
+                $("h1").text("HELLO WORLD");
+            });
+            
+
+            // Key Press EventListener
+            // More felxible eventlisntener us .on function
+            $("input").keypress(function (event) {
+                $("h1").text(event.key);
+            });
+
+            $("h1").on("mouseover", function() {
+                $("span").text("new text");
+            });
+
+            // mouse hover EventListener
+            $("h1").mouseover(function() {
+                $("h1").css("color", "red");
+            });
+            $("h1").on("mouseout", function() {
+                $("span").text("");
+                $("h1").css("color", "yellow");
+            });
+
+
+        });
+    </script>
+    <style>
+        h1 {
+            font-family: Georgia, 'Times New Roman', Times, serif;
+        }
+        
+        .big-title {
+            font-size: 60px;
+            color: yellow;
+            font-style: oblique;
+        }
+    </style>
+</head>
+    <body>
+        <h1 class="big-title">HELLO</h1>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+
+        <button>Click Me</button>
+        <button>Click Me</button>
+        <button>Click Me</button>
+
+        <input type="text">
+    </body>
+</html>
